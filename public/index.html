@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shed! 锄大猫</title>
+<meta name="description" content="Big Two with cats, jokers and a shared deck. Play bots or friends.">
+<meta name="theme-color" content="#0b1416">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;500;600;700;800&family=Ma+Shan+Zheng&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="viewport"><div id="stage">
+  <div class="region" id="side"></div>
+  <div class="region" id="opps"></div>
+  <div class="region" id="table"></div>
+  <div class="region" id="mine"></div>
+  <div class="region" id="handzone"></div>
+  <div class="region" id="actions"></div>
+  <div class="region" id="shop" hidden></div>
+  <div id="ov"></div>
+  <div id="fx"></div>
+</div></div>
+<!-- plain scripts, loaded in order: no bundler needed -->
+<script src="js/engine.js"></script>
+<script src="js/art.js"></script>
+<script src="js/rooms.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

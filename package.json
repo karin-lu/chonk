@@ -1,0 +1,17 @@
+{
+  "name": "chonk",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Shed! 锄大猫 — Big Two with cats, jokers and a shared deck. Play bots or friends.",
+  "scripts": {
+    "dev": "bun --hot server.ts",
+    "start": "bun server.ts",
+    "sim": "node tests/sim.cjs 300",
+    "test": "node tests/sim.cjs 200 && node tests/sim.cjs 100 3 && node tests/sim.cjs 100 2",
+    "test:e2e": "node tests/e2e.mjs",
+    "build:artifact": "node scripts/build-artifact.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.56.0"
+  }
+}

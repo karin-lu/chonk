@@ -7,8 +7,9 @@ Play at **https://chonk.kat.lu**, against 1–3 bot cats or with friends: *Creat
 code, and they join from the title screen.
 
 ```sh
-bun run dev    # http://localhost:8080
-npm test       # engine + simulations
+npm install && npm run dev    # http://localhost:8086
+npm test                      # engine + simulations
+.\redeploy.ps1                # ship it to chonk.kat.lu (Windows, needs the EC2 key)
 ```
 
 See [CLAUDE.md](CLAUDE.md) for how the code is organised.

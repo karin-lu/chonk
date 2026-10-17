@@ -1,4 +1,4 @@
-// Rooms over our own WebSocket server (server.ts), shaped like the claude.ai `room` capability the game was
+// Rooms over our own WebSocket server (server/index.mjs), shaped like the claude.ai `room` capability the game was
 // first written against: use('room') gives a lobby room; lobby.join(name) gives a named room. Each room has
 // emit/on (broadcast moments), presence/peers/onPeers (per-peer state that newcomers see), connected/onConnection,
 // and leave. The game's net layer (game.js) only ever talks to this shape, so it runs unchanged either way.

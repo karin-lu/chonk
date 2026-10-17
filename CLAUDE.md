@@ -6,7 +6,8 @@ players change between hands. Cat-themed. 2–4 players: bots, or friends in a r
 ## Running
 
 ```sh
-bun run dev        # http://localhost:8080 — static files + WebSocket rooms, hot reload of server.ts
+npm install        # once: the ws package (and Playwright for the e2e test)
+npm run dev        # http://localhost:8086 — static files + WebSocket rooms, restarts on server changes
 npm test           # engine checks + bot simulations at 4, 3 and 2 players (Node, no browser)
 npm run test:e2e   # real server + three browsers playing a whole room match (needs Playwright's Chromium:
                    # `npx playwright install chromium` once)
@@ -23,11 +24,12 @@ step: edit, reload.
 | `public/js/engine.js` | The rules. Pure, no DOM. Also `require`-able from Node (tests). |
 | `public/js/art.js` | Procedural SVG: cat portraits, face cards, card backs, icons. |
 | `public/js/game.js` | Everything on screen: rendering, the animation director, input, the move queue, the room layer. |
-| `public/js/rooms.js` | WebSocket client for `server.ts`, shaped like claude.ai's `room` capability. |
+| `public/js/rooms.js` | WebSocket client for `server/index.mjs`, shaped like claude.ai's `room` capability. |
 | `public/styles.css` | Tokens (`:root`) and all styles. |
-| `server.ts` | Bun: serves `public/`, relays rooms on `/ws`, `/healthz`. |
+| `server/index.mjs` | Node + `ws`: serves `public/`, relays rooms on `/ws`, `/healthz`. Port 8086. |
 | `tests/sim.cjs` | Combo assertions + N bot-only matches with balance stats. `node tests/sim.cjs 2000 [players]` |
 | `tests/e2e.mjs` | Host + two guests through the real server, including a guest reload mid-match. |
+| `redeploy.ps1` | Ship to the games EC2 box and (re)start it. |
 
 ## How it fits together
 
@@ -72,7 +74,24 @@ the host apply moves immediately; guests send them to the host.
 
 ## Deploying
 
-Push to `main` → `.github/workflows/deploy.yml` tests, builds `ghcr.io/karin-lu/chonk`, and restarts the
-`chonk` service on the server over SSH. The service and the `chonk.kat.lu` Caddy entry are defined in
-karin-lu/website (`compose.yml`, `Caddyfile`). Needs the `SSH_PRIVATE_KEY` secret and `SSH_HOST` variable in
-this repo, and the GHCR package `chonk` set to public (or the server logged in to GHCR).
+Same box and pattern as the other kat.lu games (Bananagrams, Cabo, Rummikub, Big Two): from Windows,
+
+```powershell
+.\redeploy.ps1            # key defaults to $env:USERPROFILE\Downloads\key.pem
+```
+
+It tars the project, uploads it, runs `npm install --omit=dev`, and on the first run creates the `chonk`
+systemd unit and the `chonk.kat.lu` Caddy block, then restarts and checks https://chonk.kat.lu/.
+
+| | |
+|---|---|
+| Host | `16.16.219.170`, `ec2-user` |
+| Remote dir | `/opt/chonk` |
+| Service | `chonk` (systemd), Node on port **8086** |
+| DNS | A record `chonk.kat.lu -> 16.16.219.170` at EuroDNS |
+| Logs | `sudo journalctl -u chonk -f` |
+
+Ports on the box: Half Baked 8080, Star Drop 8081, Bananagrams 8082, Cabo 8083, Rummikub 8084, Big Two 8085,
+Chonk 8086. Rooms live in the process's memory, so run exactly one instance.
+
+GitHub Actions (`.github/workflows/ci.yml`) only runs `npm test`; it does not deploy.

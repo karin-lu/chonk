@@ -1,12 +1,12 @@
 // End-to-end room test: starts the real server, opens three browsers (a host and two guests), plays a whole
 // match through WebSocket rooms with animations off, reloads one guest mid-match, and checks that every page
-// ends with the same game. Run: npm run test:e2e   (needs Bun on PATH and Playwright's Chromium)
+// ends with the same game. Run: npm run test:e2e   (needs Playwright's Chromium: npx playwright install chromium)
 import { spawn } from 'node:child_process';
 import { chromium } from 'playwright';
 
 const PORT = 8765 + Math.floor(Math.random() * 200);
 const URL = `http://localhost:${PORT}/`;
-const server = spawn('bun', ['server.ts'], { env: { ...process.env, PORT: String(PORT) }, stdio: ['ignore', 'pipe', 'inherit'] });
+const server = spawn('node', ['server/index.mjs'], { env: { ...process.env, PORT: String(PORT) }, stdio: ['ignore', 'pipe', 'inherit'] });
 await new Promise((res, rej) => {
   server.stdout.on('data', d => { if (String(d).includes("Chonk on")) res(); });
   server.on('exit', c => rej(new Error(`server exited ${c}`)));

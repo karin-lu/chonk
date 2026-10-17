@@ -2,7 +2,7 @@
   "name": "chonk",
   "version": "0.3.0",
   "private": true,
-  "description": "Shed! 锄大猫 — Big Two with cats, jokers and a shared deck. Play bots or friends.",
+  "description": "Chonk 锄大猫 — Big Two with cats, jokers and a shared deck. Play bots or friends.",
   "scripts": {
     "dev": "bun --hot server.ts",
     "start": "bun server.ts",

@@ -200,7 +200,7 @@
     const hot = m >= 4 ? 'hot' : '', blaze = m >= 5 ? 'blaze' : '';
     const handNo = playing ? s.handNo : Math.min(s.handNo + 1, s.maxHands);
     $('side').innerHTML = `
-      <div class="logo"${tip('Shed! 锄大猫', 'Big Two with cats. Shed every card first and the other cats pay you fish.')}><b>Shed!</b><span>锄大猫</span></div>
+      <div class="logo"${tip('Chonk 锄大猫', 'Big Two with cats. Shed every card first and the other cats pay you fish.')}><b>Chonk</b><span>锄大猫</span></div>
       <div class="panel me-card"><div class="por" id="por-${ME}"${tip(isOnline() ? `${me.name} (you)` : 'You', 'Your fish, coins and Mult are on this side of the table.')}>${portrait(ME)}</div><div class="money">
         <div${tip(`${me.fish} fish`, 'Your score. The cat with the most fish after six hands wins.')}>${A.FISH}<span class="num">${me.fish}</span></div>
         <div${tip(`${me.coins} coins`, 'Spend them in the shop between hands. Every 5 you save earns 1 interest, up to 3.')}>${A.COIN}<span class="num">${me.coins}</span></div></div></div>
@@ -456,7 +456,7 @@
     const resume = ui.inGame && net.mode === 'solo' && s.phase !== 'matchEnd' ? `<button class="sbtn" data-act="resume"${tip('Resume', 'Back to the match you were playing.')}>Resume</button>` : '';
     return `<div class="title-screen">
       <div class="ts-art">
-        <div class="ts-logo"><b>Shed!</b><span>锄大猫</span></div>
+        <div class="ts-logo"><b>Chonk</b><span>锄大猫</span></div>
         <div class="ts-felt"><div class="ts-cats">${cats}</div></div>
       </div>
       <div class="ts-panel panel">
@@ -493,7 +493,7 @@
     <div class="rm-foot"><button class="btn" data-act="stay">Stay</button><button class="btn gold" data-act="leave">Leave</button></div>`;
   const goneHTML = () => `<h2>The host left</h2><p>Keep this match going here, with bots in the other seats?</p>
     <div class="rm-foot"><button class="btn gold" data-act="gone-bots">Keep playing</button><button class="btn" data-act="leave">Menu</button></div>`;
-  const rotateHTML = () => `<div class="rotate" id="rotate" hidden><div><div class="ph"></div><h2 style="font-family:var(--font-display);font-weight:400;color:var(--lamp);margin:0 0 6px">Turn your phone sideways</h2><p style="color:var(--muted);margin:0 0 12px">Shed! is played in landscape, like a real card table.</p><button class="btn" data-act="anyway">Play anyway</button></div></div>`;
+  const rotateHTML = () => `<div class="rotate" id="rotate" hidden><div><div class="ph"></div><h2 style="font-family:var(--font-display);font-weight:400;color:var(--lamp);margin:0 0 6px">Turn your phone sideways</h2><p style="color:var(--muted);margin:0 0 12px">Chonk is played in landscape, like a real card table.</p><button class="btn" data-act="anyway">Play anyway</button></div></div>`;
   function logHTML() {
     const lines = s.log.slice(-160).map(l => `<div class="${l.cls}">${esc(youify(l.text))}</div>`).join('');
     return `<button class="btn close" data-act="close">Close</button><h2>Table talk</h2><div class="logbox">${lines || 'Nothing has happened yet.'}</div>`;
@@ -527,7 +527,7 @@
     const houses = ['bath', 'vacuum', 'laser', 'flip'].map(h => `<li><b>${E.HOUSE[h].name}:</b> ${esc(E.HOUSE[h].text)}</li>`).join('');
     const stars = E.STAR_IDS.map(k => `<tr><td>${E.STARS[k].label}</td><td>${E.STARS[k].name}</td><td>+${E.BASE_GAIN[k]}</td><td>+${E.BASE_GAIN[k] + E.MAX_LEVEL - 1}</td></tr>`).join('');
     const secs = [['goal', 'Goal'], ['cards', 'Cards'], ['plays', 'Plays'], ['trick', 'Tricks'], ['dig', 'Digging'], ['mult', 'Mult'], ['pay', 'Payout'], ['pounce', 'Pounce'], ['shop', 'Shop'], ['deck', 'Shared deck'], ['house', 'House rules'], ['end', 'Winning']];
-    return `<button class="btn close gold" data-act="close">${firstVisit ? 'Start playing' : 'Back to the game'}</button><h2>How to play Shed!</h2>
+    return `<button class="btn close gold" data-act="close">${firstVisit ? 'Start playing' : 'Back to the game'}</button><h2>How to play Chonk</h2>
       <p>Big Two with cats and Balatro-style shopping. Each hand, race to shed your cards. When someone plays their last card, everyone else pays them fish. After six hands, the cat with the most fish wins.</p>
       <nav class="toc">${secs.map(([id, t]) => `<a href="#r-${id}" data-act="toc">${t}</a>`).join('')}</nav>
       <h3 id="r-goal">The goal</h3><p>You play against one to three other cats: bots, or friends in a room. Everyone starts with <b>100 fish</b>. Each hand, everyone gets up to 13 cards from the shared deck; the rest go face down in the <b>litter box</b>. Be the first to play every card.</p>
@@ -981,7 +981,7 @@
 
     init() {
       // On claude.ai the page gets rooms from the platform; self-hosted, from our own WebSocket server (rooms.js).
-      const c = window.claude && typeof window.claude.use === 'function' ? window.claude : window.ShedRooms;
+      const c = window.claude && typeof window.claude.use === 'function' ? window.claude : window.ChonkRooms;
       if (!c || typeof c.use !== 'function') return;
       c.use('room').then(api => {
         if (!api) return;

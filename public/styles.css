@@ -1,4 +1,4 @@
-/* Shed! 锄大猫 — base tokens and reset */
+/* Chonk 锄大猫 — base tokens and reset */
 /* Layout: a fixed 1024x576 landscape stage scaled to fit. Left sidebar = status, top row = three opponents,
    centre = the felt table, bottom = your jokers, hand and actions. The shop slides up over the table. */
 :root {
@@ -66,9 +66,9 @@ button:focus-visible { outline: 3px solid var(--lamp); outline-offset: 2px; }
 #fx { position: absolute; inset: 0; z-index: 45; pointer-events: none; overflow: visible; }
 
 /* ---------- sidebar ---------- */
-.logo { display: flex; align-items: baseline; gap: 6px; padding: 2px 4px 0; }
-.logo b { font-family: var(--font-display); font-weight: 400; font-size: 34px; color: var(--lamp); line-height: 1; text-shadow: 0 2px 0 var(--lamp-ink); }
-.logo span { font-family: var(--font-brush); font-size: 24px; color: var(--paper); line-height: 1; filter: drop-shadow(0 1px 0 #000); }
+.logo { display: flex; align-items: baseline; gap: 6px; padding: 2px 4px 0; white-space: nowrap; }
+.logo b { font-family: var(--font-display); font-weight: 400; font-size: 30px; color: var(--lamp); line-height: 1; text-shadow: 0 2px 0 var(--lamp-ink); }
+.logo span { font-family: var(--font-brush); font-size: 20px; color: var(--paper); line-height: 1; filter: drop-shadow(0 1px 0 #000); }
 .panel { background: linear-gradient(180deg, var(--panel-2), var(--panel)); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 2px 0 rgba(0,0,0,.35); }
 .me-card { display: flex; align-items: center; gap: 8px; padding: 6px 8px; }
 .me-card .por { width: 52px; height: 52px; }

@@ -1,4 +1,4 @@
-// Shed! server: serves public/ and relays rooms over WebSocket at /ws.
+// Chonk server: serves public/ and relays rooms over WebSocket at /ws.
 //
 // The server never runs the game. In a room, the host's browser is the referee: it applies every move and
 // broadcasts a numbered log; guests replay it with the same deterministic engine (see CLAUDE.md, "Rooms").
@@ -188,4 +188,4 @@ const server = Bun.serve<{ peer: string | null; rooms: Set<string>; tokens: numb
   },
 });
 
-console.log(`Shed! on http://localhost:${server.port}`);
+console.log(`Chonk on http://localhost:${server.port}`);

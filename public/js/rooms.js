@@ -100,7 +100,7 @@
     return room;
   }
 
-  window.ShedRooms = {
+  window.ChonkRooms = {
     async use(cap) {
       if (cap !== 'room') return null;
       if (!(await connect())) return null;

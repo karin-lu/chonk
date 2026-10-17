@@ -8,7 +8,7 @@ const PORT = 8765 + Math.floor(Math.random() * 200);
 const URL = `http://localhost:${PORT}/`;
 const server = spawn('bun', ['server.ts'], { env: { ...process.env, PORT: String(PORT) }, stdio: ['ignore', 'pipe', 'inherit'] });
 await new Promise((res, rej) => {
-  server.stdout.on('data', d => { if (String(d).includes('Shed!')) res(); });
+  server.stdout.on('data', d => { if (String(d).includes("Chonk on")) res(); });
   server.on('exit', c => rej(new Error(`server exited ${c}`)));
   setTimeout(() => rej(new Error('server did not start')), 8000);
 });

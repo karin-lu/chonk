@@ -1,4 +1,4 @@
-# Shed! 锄大猫
+# Chonk 锄大猫
 
 Big Two with cats. Shed your cards first and everyone else pays you fish, then spend coins on jokers, star
 charts and fortune cards that change the deck everyone shares. Six hands; most fish wins.

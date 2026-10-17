@@ -1,4 +1,4 @@
-// Procedural first-pass art for Shed! v2: ink-outlined cats, card faces, icons. Swap for drawn art later.
+// Procedural first-pass art for Chonk: ink-outlined cats, card faces, icons. Swap for drawn art later.
 const Art = (() => {
   const INK = '#2a1d17';
   let uid = 0;

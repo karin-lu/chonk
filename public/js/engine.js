@@ -1,4 +1,4 @@
-// Shed! 锄大猫 — rules engine v2 (pure JS, no DOM). Used by the page and by sim.js.
+// Chonk 锄大猫 — rules engine v2 (pure JS, no DOM). Used by the page and by sim.js.
 // Cards are instances: every card has a uid and a face (rank * 4 + suit), so the shared deck can hold copies.
 const Engine = (() => {
   'use strict';

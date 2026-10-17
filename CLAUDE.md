@@ -1,4 +1,4 @@
-# Shed! 锄大猫 (chonk.kat.lu)
+# Chonk 锄大猫 (chonk.kat.lu)
 
 A browser card game: Big Two (锄大地) climbing, with Balatro-style jokers, packs and a shared deck that
 players change between hands. Cat-themed. 2–4 players: bots, or friends in a room.
@@ -10,7 +10,7 @@ bun run dev        # http://localhost:8080 — static files + WebSocket rooms, h
 npm test           # engine checks + bot simulations at 4, 3 and 2 players (Node, no browser)
 npm run test:e2e   # real server + three browsers playing a whole room match (needs Playwright's Chromium:
                    # `npx playwright install chromium` once)
-npm run build:artifact   # one-file dist/shed.html for publishing as a claude.ai artifact
+npm run build:artifact   # one-file dist/chonk.html for publishing as a claude.ai artifact
 ```
 
 Front-end files are plain scripts loaded in order by `public/index.html`. There is no bundler and no build
@@ -58,7 +58,7 @@ the host apply moves immediately; guests send them to the host.
 - Known gap: the log lives in the host's tab, so a host reload ends the room.
 
 **Same code on claude.ai.** `game.js` uses `window.claude.use('room')` when it exists (artifact) and
-`window.ShedRooms` (our server) otherwise. Keep `rooms.js` to that shape.
+`window.ChonkRooms` (our server) otherwise. Keep `rooms.js` to that shape.
 
 ## UI conventions
 
